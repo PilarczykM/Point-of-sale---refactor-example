@@ -1,4 +1,4 @@
-import dataclasses
+from dataclasses import dataclass, field
 from enum import Enum
 
 
@@ -7,8 +7,8 @@ class OrderStatus(Enum):
     PAID = "paid"
 
 
-@dataclasses
-class Item:
+@dataclass
+class LineItem:
     name: str
     price: int
     quantity: int = 1
@@ -18,15 +18,14 @@ class Item:
         return self.price * self.quantity
 
 
-@dataclasses
+@dataclass
 class Order:
-    item: list[Item] = dataclasses.field(default_factory=list)
+    line_items: list[LineItem] = field(default_factory=list)
     status: OrderStatus = OrderStatus.OPEN
 
     @property
     def total(self) -> int:
-        return sum(item.total for item in self.item)
+        return sum(item.total for item in self.line_items)
 
-    @property
-    def pay(self):
+    def pay(self) -> None:
         self.status = OrderStatus.PAID
