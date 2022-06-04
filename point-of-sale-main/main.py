@@ -1,16 +1,14 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from pay.order import Order, LineItem
+from pay.payment import pay_order
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def main():
+    # Test card number: 1249190007575069
+    order = Order()
+    order.line_items.append(LineItem(name="Shoes", price=100, quantity=2))
+    order.line_items.append(LineItem(name="Hat", price=30))
+    pay_order(order)
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
