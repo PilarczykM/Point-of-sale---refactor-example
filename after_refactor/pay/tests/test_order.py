@@ -16,4 +16,4 @@ def test_order_with_one_item() -> None:
 def test_order_pay_change_status() -> None:
     order = Order()
     order.pay()
-    order.status == OrderStatus.PAID
+    assert order.status == OrderStatus.PAID
