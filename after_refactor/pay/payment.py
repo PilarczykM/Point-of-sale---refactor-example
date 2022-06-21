@@ -12,8 +12,5 @@ class Payment(Protocol):
 def pay_order(order: Order, card: CreditCard, payment: Payment):
     if order.total == 0:
         raise ValueError("Can't pay an order with total 0.")
-    card = input("Please enter card number: ")
-    month = int(input("Please enter the card expiry month: "))
-    year = int(input("Please enter the card expiry year: "))
-    payment.charge(card, month, year, amount=order.total)
+    payment.charge(card, amount=order.total)
     order.pay()

@@ -15,7 +15,7 @@ class PaymentProcessor:
             raise ValueError('Invalid Card')
         if not self._check_api_key():
             raise ValueError("Invalid API key")
-        print(f"Charging card number {card} for ${amount / 100:.2f}")
+        print(f"Charging card number {card.number} for ${amount / 100:.2f}")
 
     def validate_card(self, card: CreditCard) -> bool:
         return self.luhn_checksum(card.number) and datetime(card.expiry_year, card.expiry_month, 1) > datetime.now()
