@@ -7,7 +7,7 @@ from pay.payment import pay_order
 
 @pytest.fixture
 def card() -> CreditCard:
-    return CreditCard("1249190007575069", "12", "2024")
+    return CreditCard("1249190007575069", 12, 2024)
 
 
 class PaymentProcessorMock:
